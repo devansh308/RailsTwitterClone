@@ -1,0 +1,19 @@
+<h2>Social Profile</h2>
+<p>Follow other users and get followed by them.</p>
+<main>
+  <%= render "profile/user", user: @user %>
+</main>
+<% if current_user == @user %>
+  <hr />
+  <p class="text-secondary">(Private to you)</p>
+  <p class="lead mb-0">Following:</p>
+  <% current_user.followees.each do |u| %>
+    <%= u.name %> @<%= u.username %>
+    <br />
+  <% end %>
+  <p class="lead mt-3 mb-0">Followers:</p>
+  <% current_user.followers.each do |u| %>
+    <%= u.name %> @<%= u.username %>
+    <br />
+  <% end %>
+<% end %>
